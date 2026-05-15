@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExactChoice — Operations Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg: #f1f4f9;
+  --bg2: #e8ecf3;
+  --white: #ffffff;
+  --border: #e0e7ef;
+  --text: #16213e;
+  --text2: #5a6a85;
+  --text3: #a0aec0;
+
+  /* Man — deep blue */
+  --man-bg: #eff6ff;
+  --man-bg-dark: #dbeafe;
+  --man-border: #93c5fd;
+  --man-icon: #1d4ed8;
+  --man-pill: #dbeafe;
+  --man-pill-text: #1e40af;
+  --man-grad: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  --man-glow: rgba(29,78,216,0.13);
+
+  /* Ladies — rose */
+  --lady-bg: #fff1f2;
+  --lady-bg-dark: #fecdd3;
+  --lady-border: #fda4af;
+  --lady-icon: #be123c;
+  --lady-pill: #ffe4e6;
+  --lady-pill-text: #9f1239;
+  --lady-grad: linear-gradient(135deg, #be123c 0%, #f43f5e 100%);
+  --lady-glow: rgba(190,18,60,0.12);
+
+  /* Others — teal */
+  --other-bg: #f0fdfa;
+  --other-bg-dark: #ccfbf1;
+  --other-border: #5eead4;
+  --other-icon: #0f766e;
+  --other-pill: #ccfbf1;
+  --other-pill-text: #115e59;
+  --other-grad: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  --other-glow: rgba(15,118,110,0.12);
+
+  /* Dashboards — green */
+  --dash-bg: #f0fdf4;
+  --dash-border: #bbf7d0;
+  --dash-icon: #16a34a;
+  --dash-pill: #dcfce7;
+  --dash-pill-text: #15803d;
+  --dash-grad: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  --dash-glow: rgba(22,163,74,0.12);
+
+  /* Checklist — violet */
+  --check-bg: #faf5ff;
+  --check-border: #d8b4fe;
+  --check-icon: #7c3aed;
+  --check-pill: #ede9fe;
+  --check-pill-text: #6d28d9;
+  --check-grad: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  --check-glow: rgba(124,58,237,0.12);
+
+  --accent: #4f46e5;
+  --accent-light: #eef2ff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+.brand {
+  display: flex; align-items: center; gap: 9px;
+  font-weight: 800; font-size: 1.1rem;
+  color: var(--accent);
+  text-decoration: none; cursor: pointer;
+  border: none; background: none; font-family: inherit;
+  letter-spacing: -0.3px;
+}
+.brand-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--accent) 0%, #818cf8 100%);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px;
+  box-shadow: 0 2px 8px rgba(79,70,229,0.35);
+}
+.nav-links { display: flex; gap: 5px; }
+.nav-btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 7px 16px;
+  border-radius: 9px;
+  font-size: 0.855rem; font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  background: transparent;
+  color: var(--text2);
+  transition: all 0.16s;
+  font-family: inherit;
+}
+.nav-btn i { font-size: 17px; }
+.nav-btn:hover { background: var(--bg); color: var(--text); }
+.nav-btn.active { background: var(--accent-light); color: var(--accent); border-color: #c7d2fe; }
+
+/* ── PAGE TOGGLE ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #3730a3 0%, #4f46e5 45%, #7c3aed 100%);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 99px;
+  padding: 5px 16px;
+  font-size: 0.73rem; font-weight: 700;
+  letter-spacing: 0.7px; text-transform: uppercase;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(4px);
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.7px;
+}
+.hero p { font-size: 0.9rem; opacity: 0.82; }
+
+/* ── STATS ── */
+.stats-row {
+  display: flex; justify-content: center;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.stat {
+  flex: 1; max-width: 200px;
+  text-align: center;
+  padding: 1.1rem 0.5rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.stat:last-child { border-right: none; }
+.stat:hover { background: var(--bg); }
+.stat-n { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+.stat-l { font-size: 0.7rem; color: var(--text2); font-weight: 600; margin-top: 3px; letter-spacing: 0.3px; }
+
+/* ── WRAP ── */
+.wrap { max-width: 1140px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+/* ── SECTION BAND ── */
+.section-band {
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 14px;
+  position: relative; overflow: hidden;
+}
+.section-band::after {
+  content: '';
+  position: absolute; right: -20px; top: -20px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  pointer-events: none;
+}
+.band-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: #fff; flex-shrink: 0;
+}
+.band-text h2 {
+  font-size: 1rem; font-weight: 800; color: #fff; letter-spacing: -0.2px;
+}
+.band-text p { font-size: 0.75rem; color: rgba(255,255,255,0.78); margin-top: 1px; font-weight: 500; }
+.band-count {
+  margin-left: auto;
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 4px 12px; border-radius: 99px;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.3px;
+}
+
+.band-man  { background: var(--man-grad); }
+.band-lady { background: var(--lady-grad); }
+.band-other { background: var(--other-grad); }
+.band-dash { background: var(--dash-grad); }
+
+/* ── GRID ── */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(248px,1fr)); gap: 13px; margin-bottom: 2.8rem; }
+
+/* ── CARD ── */
+.card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 1.1rem 1.2rem;
+  text-decoration: none;
+  display: flex; align-items: flex-start; gap: 13px;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+}
+
+/* Man cards */
+.card.man { border-color: var(--man-border); }
+.card.man:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--man-glow); border-color: var(--man-icon); }
+.card.man .card-ico { background: var(--man-bg); color: var(--man-icon); }
+.card.man .pill { background: var(--man-pill); color: var(--man-pill-text); }
+
+/* Ladies cards */
+.card.lady { border-color: var(--lady-border); }
+.card.lady:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--lady-glow); border-color: var(--lady-icon); }
+.card.lady .card-ico { background: var(--lady-bg); color: var(--lady-icon); }
+.card.lady .pill { background: var(--lady-pill); color: var(--lady-pill-text); }
+
+/* Other cards */
+.card.other { border-color: var(--other-border); }
+.card.other:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--other-glow); border-color: var(--other-icon); }
+.card.other .card-ico { background: var(--other-bg); color: var(--other-icon); }
+.card.other .pill { background: var(--other-pill); color: var(--other-pill-text); }
+
+/* Dashboard cards */
+.card.db { border-color: var(--dash-border); }
+.card.db:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--dash-glow); border-color: var(--dash-icon); }
+.card.db .card-ico { background: var(--dash-bg); color: var(--dash-icon); }
+.card.db .pill { background: var(--dash-pill); color: var(--dash-pill-text); }
+
+.card-ico {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.card-body { flex: 1; min-width: 0; }
+.card-title { font-size: 0.875rem; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 4px; }
+.card-sub { font-size: 0.72rem; color: var(--text2); display: flex; align-items: center; gap: 4px; }
+.card-sub i { font-size: 12px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.5px;
+  padding: 2px 9px; border-radius: 99px; text-transform: uppercase; margin-top: 6px;
+}
+.pill i { font-size: 10px; }
+.card-arrow {
+  width: 28px; height: 28px;
+  background: var(--bg); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text3); font-size: 13px;
+  flex-shrink: 0; opacity: 0; transition: opacity 0.15s;
+}
+.card:hover .card-arrow { opacity: 1; }
+
+/* ── DIVIDER BETWEEN SHEET GROUPS ── */
+.sheet-divider {
+  height: 1px; background: var(--border);
+  margin: 0.5rem 0 2.2rem;
+  opacity: 0;
+}
+
+/* ── CHECKLIST PAGE ── */
+.check-hero {
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 50%, #a855f7 100%);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center; color: #fff;
+  position: relative; overflow: hidden;
+}
+.check-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(255,255,255,0.08) 0%, transparent 55%);
+  pointer-events: none;
+}
+.check-hero h1 { font-size: clamp(1.7rem,4vw,2.5rem); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+.check-hero p { opacity: 0.82; font-size: 0.9rem; }
+
+/* ── CHECKLIST BAND ── */
+.check-band {
+  background: var(--check-grad);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 14px;
+  position: relative; overflow: hidden;
+}
+.check-band::after {
+  content: '';
+  position: absolute; right: -20px; top: -20px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+}
+.check-band .band-icon { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); }
+.check-band .band-text h2 { color: #fff; }
+.check-band .band-count { background: rgba(255,255,255,0.22); color: #fff; }
+
+/* ── PERSON GRID ── */
+.person-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px,1fr)); gap: 13px; }
+
+.person-card {
+  background: var(--white);
+  border: 1.5px solid var(--check-border);
+  border-radius: 15px;
+  padding: 1.1rem 1.3rem;
+  text-decoration: none;
+  display: flex; align-items: center; gap: 15px;
+  transition: all 0.18s;
+}
+.person-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--check-icon);
+  box-shadow: 0 8px 28px var(--check-glow);
+}
+
+.avatar {
+  width: 50px; height: 50px;
+  border-radius: 13px;
+  background: var(--check-bg);
+  border: 1.5px solid var(--check-border);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.9rem;
+  color: var(--check-icon); flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+.person-card:hover .avatar {
+  background: var(--check-icon);
+  color: #fff;
+  border-color: var(--check-icon);
+}
+
+.p-info { flex: 1; }
+.p-name { font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 3px; }
+.p-sub { font-size: 0.71rem; color: var(--text2); display: flex; align-items: center; gap: 4px; }
+
+.open-btn {
+  display: flex; align-items: center; gap: 5px;
+  background: var(--check-bg);
+  border: 1.5px solid var(--check-border);
+  color: var(--check-icon);
+  border-radius: 9px; padding: 7px 14px;
+  font-size: 0.75rem; font-weight: 700;
+  transition: all 0.15s; flex-shrink: 0; font-family: inherit; cursor: pointer;
+}
+.person-card:hover .open-btn { background: var(--check-icon); color: #fff; border-color: var(--check-icon); }
+
+/* ── CHECKLIST ALPHA INDEX BAR ── */
+.alpha-label {
+  display: inline-block;
+  background: var(--check-pill);
+  color: var(--check-pill-text);
+  font-size: 0.68rem; font-weight: 800;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 2px 10px; border-radius: 6px;
+  margin-bottom: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width: 640px) {
+  nav { padding: 0 1rem; gap: 1rem; }
+  .wrap { padding: 1.5rem 1rem 3rem; }
+  .section-band { padding: 0.85rem 1rem; }
+  .band-count { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <button class="brand" onclick="showPage('home')">
+    <div class="brand-icon"><i class="ti ti-diamond"></i></div>
+    ExactChoice
+  </button>
+  <div class="nav-links">
+    <button class="nav-btn active" id="btn-home" onclick="showPage('home')">
+      <i class="ti ti-home-2"></i> Home
+    </button>
+    <button class="nav-btn" id="btn-checklist" onclick="showPage('checklist')">
+      <i class="ti ti-checklist"></i> Checklist
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════ HOME ══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <div class="hero">
+    <div class="hero-eyebrow"><i class="ti ti-building-factory-2"></i> Operations Portal</div>
+    <h1>ExactChoice Dashboard</h1>
+    <p>All your sheets, trackers &amp; live dashboards — one place.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">10</div><div class="stat-l">📄 Sheets</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">📊 Dashboards</div></div>
+    <div class="stat"><div class="stat-n">6</div><div class="stat-l">✅ Checklists</div></div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ─────────────── DASHBOARDS ─────────────── -->
+    <div class="section-band band-dash">
+      <div class="band-icon"><i class="ti ti-layout-dashboard"></i></div>
+      <div class="band-text">
+        <h2>Live Dashboards</h2>
+        <p>Real-time performance &amp; tracking views</p>
+      </div>
+      <span class="band-count">5 Dashboards</span>
+    </div>
+    <div class="grid">
+
+      <!-- A: IMS Dashboard — Ladies -->
+      <a class="card db" href="https://ims-dashboard-pv7r.onrender.com/" target="_blank">
+        <div class="card-ico"><i class="ti ti-chart-area"></i></div>
+        <div class="card-body">
+          <div class="card-title">IMS Dashboard — Ladies</div>
+          <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live · Render</div>
+          <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <!-- L: Ladies Lot Tracking Dashboard -->
+      <a class="card db" href="https://lot-tracking-dashboard.onrender.com/" target="_blank">
+        <div class="card-ico"><i class="ti ti-map-pin"></i></div>
+        <div class="card-body">
+          <div class="card-title">Ladies Lot Tracking Dashboard</div>
+          <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live · Render</div>
+          <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <!-- P: Packing Performance Dashboard -->
+      <a class="card db" href="https://packing-performance-dashboard1.onrender.com/" target="_blank">
+        <div class="card-ico"><i class="ti ti-package"></i></div>
+        <div class="card-body">
+          <div class="card-title">Packing Performance Dashboard</div>
+          <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live · Render</div>
+          <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <!-- P: Product Image Viewer -->
+      <a class="card db" href="https://coruscating-malasada-c99d3b.netlify.app/" target="_blank">
+        <div class="card-ico"><i class="ti ti-photo"></i></div>
+        <div class="card-body">
+          <div class="card-title">Product Image Viewer</div>
+          <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live · Netlify</div>
+          <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <!-- P: Product Stock -->
+      <a class="card db" href="https://cerulean-cactus-jeans.netlify.app/" target="_blank">
+        <div class="card-ico"><i class="ti ti-stack-2"></i></div>
+        <div class="card-body">
+          <div class="card-title">Product Stock</div>
+          <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live · Netlify</div>
+          <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- ─────────────── MAN SECTION ─────────────── -->
+    <div class="section-band band-man">
+      <div class="band-icon"><i class="ti ti-man"></i></div>
+      <div class="band-text">
+        <h2>Man Sheets</h2>
+        <p>Lot tracking &amp; production sheets for Men's line</p>
+      </div>
+      <span class="band-count">3 Sheets</span>
+    </div>
+    <div class="grid">
+
+      <a class="card man" href="https://docs.google.com/spreadsheets/d/1Nv7SRKd87ZD1Oa8Q8DptPNMM8ieyoxvJoZ_pcsGR160/edit?gid=0#gid=0" target="_blank">
+        <div class="card-ico"><i class="ti ti-shirt"></i></div>
+        <div class="card-body">
+          <div class="card-title">Man Lot Sheet</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="card man" href="https://docs.google.com/spreadsheets/d/1HbULw8ZVyHeN3WAc2BydyCHRNk-vRGJz3io2a1fLpNY/edit?gid=0#gid=0" target="_blank">
+        <div class="card-ico"><i class="ti ti-shirt"></i></div>
+        <div class="card-body">
+          <div class="card-title">Man Lot Sheet (Alt)</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="card man" href="https://docs.google.com/spreadsheets/d/10HJqPYCTyEcTGqPNKj7vzfkWD6BT_8zMXKeNMcNPIok/edit?gid=39675698#gid=39675698" target="_blank">
+        <div class="card-ico"><i class="ti ti-file-spreadsheet"></i></div>
+        <div class="card-body">
+          <div class="card-title">Scot Sheet</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- ─────────────── LADIES SECTION ─────────────── -->
+    <div class="section-band band-lady">
+      <div class="band-icon"><i class="ti ti-woman"></i></div>
+      <div class="band-text">
+        <h2>Ladies Sheets</h2>
+        <p>Lot tracking &amp; inventory sheets for Ladies' line</p>
+      </div>
+      <span class="band-count">3 Sheets</span>
+    </div>
+    <div class="grid">
+
+      <a class="card lady" href="https://docs.google.com/spreadsheets/d/1W309AeGbOUuP92YYpkaDuppvqP2Rih2K79Tpj7DBg6Y/edit?gid=826574813#gid=826574813" target="_blank">
+        <div class="card-ico"><i class="ti ti-table"></i></div>
+        <div class="card-body">
+          <div class="card-title">Ladies Lot Sheet</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="card lady" href="https://docs.google.com/spreadsheets/d/168RnltNMCFaDcwXDInQ0zuKssVVo2QKc89gVrZIlvZI/edit?gid=1105757494#gid=1105757494" target="_blank">
+        <div class="card-ico"><i class="ti ti-database"></i></div>
+        <div class="card-body">
+          <div class="card-title">IMS Sheet — Ladies</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="card lady" href="https://docs.google.com/spreadsheets/d/1XPlvh55f1ZPBNJ7CO8eOXRRN2Y8JIbTDCQ6BIfieO5c/edit?gid=842084861#gid=842084861" target="_blank">
+        <div class="card-ico"><i class="ti ti-history"></i></div>
+        <div class="card-body">
+          <div class="card-title">Ladies Lot Tracking (Old)</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- ─────────────── OTHER SHEETS SECTION ─────────────── -->
+    <div class="section-band band-other">
+      <div class="band-icon"><i class="ti ti-folders"></i></div>
+      <div class="band-text">
+        <h2>Other Sheets</h2>
+        <p>Cutting, logistics, packing &amp; operations trackers</p>
+      </div>
+      <span class="band-count">4 Sheets</span>
+    </div>
+    <div class="grid">
+
+      <a class="card other" href="https://docs.google.com/spreadsheets/d/1nunbHsK0TiYylqgs6OWtGKM693d0wvnjMcspFXx8HBI/edit?gid=1448283922#gid=1448283922" target="_blank">
+        <div class="card-ico"><i class="ti ti-scissors"></i></div>
+        <div class="card-body">
+          <div class="card-title">Fabric Stock MIS — Cutting Room</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="card other" href="https://docs.google.com/spreadsheets/d/1D2A8bEplLSNEfiVKE5tjrBBqmafyfro0N8sl6lZrVwk/edit?gid=663292535#gid=663292535" target="_blank">
+        <div class="card-ico"><i class="ti ti-rocket"></i></div>
+        <div class="card-body">
+          <div class="card-title">Fast Track M2D Tracker (FMS)</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="card other" href="https://docs.google.com/spreadsheets/d/1cpNKq_991xMzJDNZ58e3KudohG9a3u7OP4aVY-4dq9M/edit?gid=663292535#gid=663292535" target="_blank">
+        <div class="card-ico"><i class="ti ti-truck-delivery"></i></div>
+        <div class="card-body">
+          <div class="card-title">Order To Delivery — O2D FMS</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="card other" href="https://docs.google.com/spreadsheets/d/1c09JKvgMtWeXGGSgK_wBoVxPPcD4sa8_WQFVmMNDkZ8/edit?gid=0#gid=0" target="_blank">
+        <div class="card-ico"><i class="ti ti-box"></i></div>
+        <div class="card-body">
+          <div class="card-title">Packing Daily Log Book</div>
+          <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+          <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+        </div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+    </div>
+
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ CHECKLIST ══════════════════════════════════════ -->
+<div id="page-checklist" class="page">
+
+  <div class="check-hero">
+    <div class="hero-eyebrow" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);">
+      <i class="ti ti-user-check"></i> Team Performance
+    </div>
+    <h1>Staff Checklists</h1>
+    <p>Click any name to open their personal performance report.</p>
+  </div>
+
+  <div class="wrap">
+
+    <div class="check-band">
+      <div class="band-icon"><i class="ti ti-checklist"></i></div>
+      <div class="band-text">
+        <h2>Individual Checklists</h2>
+        <p>Sorted A → Z by name</p>
+      </div>
+      <span class="band-count">6 Members</span>
+    </div>
+
+    <!-- ALPHABETICAL: Aman, Deepak, Dinkar, Gopal, Himanshu, Shiv Kumar Uncle -->
+    <div class="person-grid">
+
+      <!-- A -->
+      <a class="person-card" href="https://datastudio.google.com/u/0/reporting/c32ff209-1783-4070-a109-3d92ae9669b4/page/y0hrF" target="_blank">
+        <div class="avatar">AM</div>
+        <div class="p-info">
+          <div class="p-name">Aman</div>
+          <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+        </div>
+        <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
+      </a>
+
+      <!-- D -->
+      <a class="person-card" href="https://datastudio.google.com/reporting/c0925f7c-a276-450e-98af-144e42e6f6eb/page/y0hrF" target="_blank">
+        <div class="avatar">DP</div>
+        <div class="p-info">
+          <div class="p-name">Deepak</div>
+          <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+        </div>
+        <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
+      </a>
+
+      <!-- D -->
+      <a class="person-card" href="https://datastudio.google.com/u/0/reporting/2af759d7-e14c-414d-a90b-dc9197b4ce2c/page/y0hrF" target="_blank">
+        <div class="avatar">DK</div>
+        <div class="p-info">
+          <div class="p-name">Dinkar</div>
+          <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+        </div>
+        <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
+      </a>
+
+      <!-- G -->
+      <a class="person-card" href="https://datastudio.google.com/reporting/7641777a-085f-4dde-8e42-3335f542bf81/page/y0hrF" target="_blank">
+        <div class="avatar">GP</div>
+        <div class="p-info">
+          <div class="p-name">Gopal</div>
+          <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+        </div>
+        <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
+      </a>
+
+      <!-- H -->
+      <a class="person-card" href="https://datastudio.google.com/u/0/reporting/b998dc6c-3a44-4327-94f5-6a4a0d0f69cf/page/y0hrF" target="_blank">
+        <div class="avatar">HM</div>
+        <div class="p-info">
+          <div class="p-name">Himanshu</div>
+          <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+        </div>
+        <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
+      </a>
+
+      <!-- S -->
+      <a class="person-card" href="https://datastudio.google.com/u/0/reporting/f25e1ce4-a18b-426d-96a8-6314b076601d/page/y0hrF" target="_blank">
+        <div class="avatar">SK</div>
+        <div class="p-info">
+          <div class="p-name">Shiv Kumar Uncle</div>
+          <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+        </div>
+        <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function showPage(p) {
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(x => x.classList.remove('active'));
+  document.getElementById('page-' + p).classList.add('active');
+  document.getElementById('btn-' + p).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
