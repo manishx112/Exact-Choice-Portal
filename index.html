@@ -67,6 +67,15 @@
       --dash-grad: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
       --dash-glow: rgba(22, 163, 74, 0.12);
 
+      /* Forms — amber */
+      --form-bg: #fffbeb;
+      --form-border: #fcd34d;
+      --form-icon: #b45309;
+      --form-pill: #fef3c7;
+      --form-pill-text: #92400e;
+      --form-grad: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
+      --form-glow: rgba(180, 83, 9, 0.13);
+
       /* Checklist — violet */
       --check-bg: #faf5ff;
       --check-border: #d8b4fe;
@@ -348,6 +357,10 @@
       background: var(--dash-grad);
     }
 
+    .band-form {
+      background: var(--form-grad);
+    }
+
     /* ── GRID ── */
     .grid {
       display: grid;
@@ -452,6 +465,27 @@
     .card.db .pill {
       background: var(--dash-pill);
       color: var(--dash-pill-text);
+    }
+
+    /* Form cards */
+    .card.form {
+      border-color: var(--form-border);
+    }
+
+    .card.form:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px var(--form-glow);
+      border-color: var(--form-icon);
+    }
+
+    .card.form .card-ico {
+      background: var(--form-bg);
+      color: var(--form-icon);
+    }
+
+    .card.form .pill {
+      background: var(--form-pill);
+      color: var(--form-pill-text);
     }
 
     .card-ico {
@@ -1090,7 +1124,7 @@
 
     <div class="stats-row">
       <div class="stat">
-        <div class="stat-n">10</div>
+        <div class="stat-n">14</div>
         <div class="stat-l">📄 Sheets</div>
       </div>
       <div class="stat">
@@ -1100,6 +1134,10 @@
       <div class="stat">
         <div class="stat-n">6</div>
         <div class="stat-l">✅ Checklists</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">2</div>
+        <div class="stat-l">📝 Forms</div>
       </div>
     </div>
 
@@ -1210,7 +1248,7 @@
           <h2>Man Sheets</h2>
           <p>Lot tracking &amp; production sheets for Men's line</p>
         </div>
-        <span class="band-count">3 Sheets</span>
+        <span class="band-count">4 Sheets</span>
       </div>
       <div class="grid">
 
@@ -1220,6 +1258,18 @@
           <div class="card-ico"><i class="ti ti-shirt"></i></div>
           <div class="card-body">
             <div class="card-title">Man Lot Sheet</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <a class="card man"
+          href="https://docs.google.com/spreadsheets/d/1sV8khOs38gTvDKrs-ZT24o-wFCZjd4wSbu11pYH67Vc/edit?gid=0#gid=0"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-history"></i></div>
+          <div class="card-body">
+            <div class="card-title">Man's Lot Old Sheet</div>
             <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
             <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
           </div>
@@ -1308,9 +1358,21 @@
           <h2>Other Sheets</h2>
           <p>Cutting, logistics, packing &amp; operations trackers</p>
         </div>
-        <span class="band-count">4 Sheets</span>
+        <span class="band-count">7 Sheets</span>
       </div>
       <div class="grid">
+
+        <a class="card other"
+          href="https://docs.google.com/spreadsheets/d/14GQDh3m7RG1JmvVyCyX4sX8zjgfFUhhO4wUYuZAx5NU/edit?gid=1105757494#gid=1105757494"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-building-warehouse"></i></div>
+          <div class="card-body">
+            <div class="card-title">Stock Management Sheet</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
 
         <a class="card other"
           href="https://docs.google.com/spreadsheets/d/1nunbHsK0TiYylqgs6OWtGKM693d0wvnjMcspFXx8HBI/edit?gid=1448283922#gid=1448283922"
@@ -1356,6 +1418,67 @@
             <div class="card-title">Packing Daily Log Book</div>
             <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
             <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <a class="card other"
+          href="https://docs.google.com/spreadsheets/d/1wwNjz__eG1E8T39xLgoRPV_LAgqqKUaCZLbiXF6LlVU/edit?gid=1105757494#gid=1105757494"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-database"></i></div>
+          <div class="card-body">
+            <div class="card-title">IMS Gandhi Nagar</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <a class="card other"
+          href="https://docs.google.com/spreadsheets/d/1lLF3hFKpEEXRIQzPhRzZsKux-Noy8EhPmUTDmkN51Ns/edit?gid=148342526#gid=148342526"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-arrows-exchange"></i></div>
+          <div class="card-body">
+            <div class="card-title">In Out Sheet I-16</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+      </div>
+
+      <!-- ─────────────── FORMS SECTION ─────────────── -->
+      <div class="section-band band-form">
+        <div class="band-icon"><i class="ti ti-forms"></i></div>
+        <div class="band-text">
+          <h2>Forms</h2>
+          <p>Data entry &amp; submission forms</p>
+        </div>
+        <span class="band-count">2 Forms</span>
+      </div>
+      <div class="grid">
+
+        <a class="card form"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdneC8YEDR27bTGAUxK2m5F4PDID2aWcljV8mmVdBieamceJA/viewform"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-truck-delivery"></i></div>
+          <div class="card-body">
+            <div class="card-title">Order To Delivery Form</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Forms</div>
+            <span class="pill"><i class="ti ti-forms"></i> Form</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <a class="card form"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfH530tqQp3YZHcGnVcA37ZZcvMMYvHgEcRd7847apmdTBJvA/viewform"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-award"></i></div>
+          <div class="card-body">
+            <div class="card-title">Distributor/Dealer Loyalty Program</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Forms</div>
+            <span class="pill"><i class="ti ti-forms"></i> Form</span>
           </div>
           <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
         </a>
