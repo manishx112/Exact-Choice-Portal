@@ -67,6 +67,15 @@
       --dash-grad: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
       --dash-glow: rgba(22, 163, 74, 0.12);
 
+      /* IMS Stock — fuchsia */
+      --ims-bg: #fdf4ff;
+      --ims-border: #f0abfc;
+      --ims-icon: #a21caf;
+      --ims-pill: #fae8ff;
+      --ims-pill-text: #86198f;
+      --ims-grad: linear-gradient(135deg, #a21caf 0%, #d946ef 100%);
+      --ims-glow: rgba(162, 28, 175, 0.13);
+
       /* Forms — amber */
       --form-bg: #fffbeb;
       --form-border: #fcd34d;
@@ -361,6 +370,10 @@
       background: var(--form-grad);
     }
 
+    .band-ims {
+      background: var(--ims-grad);
+    }
+
     /* ── GRID ── */
     .grid {
       display: grid;
@@ -465,6 +478,27 @@
     .card.db .pill {
       background: var(--dash-pill);
       color: var(--dash-pill-text);
+    }
+
+    /* IMS Stock cards */
+    .card.ims {
+      border-color: var(--ims-border);
+    }
+
+    .card.ims:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px var(--ims-glow);
+      border-color: var(--ims-icon);
+    }
+
+    .card.ims .card-ico {
+      background: var(--ims-bg);
+      color: var(--ims-icon);
+    }
+
+    .card.ims .pill {
+      background: var(--ims-pill);
+      color: var(--ims-pill-text);
     }
 
     /* Form cards */
@@ -1124,7 +1158,7 @@
 
     <div class="stats-row">
       <div class="stat">
-        <div class="stat-n">13</div>
+        <div class="stat-n">14</div>
         <div class="stat-l">📄 Sheets</div>
       </div>
       <div class="stat">
@@ -1136,7 +1170,7 @@
         <div class="stat-l">✅ Checklists</div>
       </div>
       <div class="stat">
-        <div class="stat-n">2</div>
+        <div class="stat-n">3</div>
         <div class="stat-l">📝 Forms</div>
       </div>
     </div>
@@ -1339,6 +1373,43 @@
 
       </div>
 
+      <!-- ─────────────── IMS STOCK SECTION ─────────────── -->
+      <div class="section-band band-ims">
+        <div class="band-icon"><i class="ti ti-building-warehouse"></i></div>
+        <div class="band-text">
+          <h2>IMS Stock</h2>
+          <p>Inventory management &amp; stock sheets</p>
+        </div>
+        <span class="band-count">2 Sheets</span>
+      </div>
+      <div class="grid">
+
+        <a class="card ims"
+          href="https://docs.google.com/spreadsheets/d/14GQDh3m7RG1JmvVyCyX4sX8zjgfFUhhO4wUYuZAx5NU/edit?gid=1105757494#gid=1105757494"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-building-warehouse"></i></div>
+          <div class="card-body">
+            <div class="card-title">Stock Management Sheet</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <a class="card ims"
+          href="https://docs.google.com/spreadsheets/d/1wwNjz__eG1E8T39xLgoRPV_LAgqqKUaCZLbiXF6LlVU/edit?gid=1105757494#gid=1105757494"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-database"></i></div>
+          <div class="card-body">
+            <div class="card-title">IMS Gandhi Nagar</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+      </div>
+
       <!-- ─────────────── OTHER SHEETS SECTION ─────────────── -->
       <div class="section-band band-other">
         <div class="band-icon"><i class="ti ti-folders"></i></div>
@@ -1346,16 +1417,28 @@
           <h2>Other Sheets</h2>
           <p>Cutting, logistics, packing &amp; operations trackers</p>
         </div>
-        <span class="band-count">7 Sheets</span>
+        <span class="band-count">6 Sheets</span>
       </div>
       <div class="grid">
 
         <a class="card other"
-          href="https://docs.google.com/spreadsheets/d/14GQDh3m7RG1JmvVyCyX4sX8zjgfFUhhO4wUYuZAx5NU/edit?gid=1105757494#gid=1105757494"
+          href="https://docs.google.com/spreadsheets/d/1cpNKq_991xMzJDNZ58e3KudohG9a3u7OP4aVY-4dq9M/edit?gid=663292535#gid=663292535"
           target="_blank">
-          <div class="card-ico"><i class="ti ti-building-warehouse"></i></div>
+          <div class="card-ico"><i class="ti ti-truck-delivery"></i></div>
           <div class="card-body">
-            <div class="card-title">Stock Management Sheet</div>
+            <div class="card-title">Order To Delivery — O2D FMS</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
+            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <a class="card other"
+          href="https://docs.google.com/spreadsheets/d/1naQm1Y9wpYCavd4TvrikdtzS9PaG9GqHtf3YvLWTG10/edit?gid=227341916#gid=227341916"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-clipboard-list"></i></div>
+          <div class="card-body">
+            <div class="card-title">Sales Inquiry Capture Sheet</div>
             <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
             <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
           </div>
@@ -1387,35 +1470,11 @@
         </a>
 
         <a class="card other"
-          href="https://docs.google.com/spreadsheets/d/1cpNKq_991xMzJDNZ58e3KudohG9a3u7OP4aVY-4dq9M/edit?gid=663292535#gid=663292535"
-          target="_blank">
-          <div class="card-ico"><i class="ti ti-truck-delivery"></i></div>
-          <div class="card-body">
-            <div class="card-title">Order To Delivery — O2D FMS</div>
-            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
-            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
-          </div>
-          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
-        </a>
-
-        <a class="card other"
           href="https://docs.google.com/spreadsheets/d/1c09JKvgMtWeXGGSgK_wBoVxPPcD4sa8_WQFVmMNDkZ8/edit?gid=0#gid=0"
           target="_blank">
           <div class="card-ico"><i class="ti ti-box"></i></div>
           <div class="card-body">
             <div class="card-title">Packing Daily Log Book</div>
-            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
-            <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
-          </div>
-          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
-        </a>
-
-        <a class="card other"
-          href="https://docs.google.com/spreadsheets/d/1wwNjz__eG1E8T39xLgoRPV_LAgqqKUaCZLbiXF6LlVU/edit?gid=1105757494#gid=1105757494"
-          target="_blank">
-          <div class="card-ico"><i class="ti ti-database"></i></div>
-          <div class="card-body">
-            <div class="card-title">IMS Gandhi Nagar</div>
             <div class="card-sub"><i class="ti ti-brand-google"></i> Google Sheets</div>
             <span class="pill"><i class="ti ti-table"></i> Spreadsheet</span>
           </div>
@@ -1443,7 +1502,7 @@
           <h2>Forms</h2>
           <p>Data entry &amp; submission forms</p>
         </div>
-        <span class="band-count">2 Forms</span>
+        <span class="band-count">3 Forms</span>
       </div>
       <div class="grid">
 
@@ -1465,6 +1524,18 @@
           <div class="card-ico"><i class="ti ti-award"></i></div>
           <div class="card-body">
             <div class="card-title">Distributor/Dealer Loyalty Program</div>
+            <div class="card-sub"><i class="ti ti-brand-google"></i> Google Forms</div>
+            <span class="pill"><i class="ti ti-forms"></i> Form</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <a class="card form"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfCoQpu0HwLqqF2_y57BL5DuTOUt_Rv3BkCJ-3lno0gGzCcKQ/viewform"
+          target="_blank">
+          <div class="card-ico"><i class="ti ti-user-search"></i></div>
+          <div class="card-body">
+            <div class="card-title">Sales Visit Inquiry Form</div>
             <div class="card-sub"><i class="ti ti-brand-google"></i> Google Forms</div>
             <span class="pill"><i class="ti ti-forms"></i> Form</span>
           </div>
