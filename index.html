@@ -865,6 +865,50 @@
       white-space: nowrap;
     }
 
+    /* Open-report link in summary band */
+    .summary-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      color: #4338ca;
+      border-radius: 9px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      z-index: 1;
+      transition: opacity 0.15s;
+    }
+
+    .summary-open-btn:hover {
+      opacity: 0.88;
+    }
+
+    /* Work-in-progress notice */
+    .wip-note {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 1.1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #92400e;
+      line-height: 1.45;
+    }
+
+    .wip-note i {
+      font-size: 18px;
+      color: #b45309;
+      flex-shrink: 0;
+    }
+
     /* Loading / error */
     .summary-loading {
       display: flex;
@@ -1162,7 +1206,7 @@
         <div class="stat-l">📄 Sheets</div>
       </div>
       <div class="stat">
-        <div class="stat-n">7</div>
+        <div class="stat-n">8</div>
         <div class="stat-l">📊 Dashboards</div>
       </div>
       <div class="stat">
@@ -1184,7 +1228,7 @@
           <h2>Live Dashboards</h2>
           <p>Real-time performance &amp; tracking views</p>
         </div>
-        <span class="band-count">7 Dashboards</span>
+        <span class="band-count">8 Dashboards</span>
       </div>
       <div class="grid">
 
@@ -1267,6 +1311,19 @@
           <div class="card-body">
             <div class="card-title">Exact Choice Stock</div>
             <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live · Render
+            </div>
+            <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <!-- F: Field Sales Dashboard -->
+        <a class="card db" href="https://field-sales-dashboard.manishx112.workers.dev/" target="_blank">
+          <div class="card-ico"><i class="ti ti-map-search"></i></div>
+          <div class="card-body">
+            <div class="card-title">Field Sales Dashboard</div>
+            <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live ·
+              Cloudflare
             </div>
             <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
           </div>
@@ -1557,7 +1614,7 @@
         <i class="ti ti-user-check"></i> Team Performance
       </div>
       <h1>Staff Checklists</h1>
-      <p>Click any name to open their personal performance report.</p>
+      <p>Click your name to sign in with your own user ID &amp; password.</p>
     </div>
 
     <div class="wrap">
@@ -1576,72 +1633,72 @@
 
         <!-- A -->
         <a class="person-card"
-          href="https://datastudio.google.com/u/0/reporting/c32ff209-1783-4070-a109-3d92ae9669b4/page/y0hrF"
+          href="https://checklist-beta-orcin.vercel.app/"
           target="_blank">
           <div class="avatar">AM</div>
           <div class="p-info">
             <div class="p-name">Aman</div>
-            <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+            <div class="p-sub"><i class="ti ti-login-2"></i> Login · My Checklist</div>
           </div>
           <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
         </a>
 
         <!-- D -->
         <a class="person-card"
-          href="https://datastudio.google.com/reporting/c0925f7c-a276-450e-98af-144e42e6f6eb/page/y0hrF"
+          href="https://checklist-beta-orcin.vercel.app/"
           target="_blank">
           <div class="avatar">DP</div>
           <div class="p-info">
             <div class="p-name">Deepak</div>
-            <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+            <div class="p-sub"><i class="ti ti-login-2"></i> Login · My Checklist</div>
           </div>
           <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
         </a>
 
         <!-- D -->
         <a class="person-card"
-          href="https://datastudio.google.com/u/0/reporting/2af759d7-e14c-414d-a90b-dc9197b4ce2c/page/y0hrF"
+          href="https://checklist-beta-orcin.vercel.app/"
           target="_blank">
           <div class="avatar">DK</div>
           <div class="p-info">
             <div class="p-name">Dinkar</div>
-            <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+            <div class="p-sub"><i class="ti ti-login-2"></i> Login · My Checklist</div>
           </div>
           <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
         </a>
 
         <!-- G -->
         <a class="person-card"
-          href="https://datastudio.google.com/reporting/7641777a-085f-4dde-8e42-3335f542bf81/page/y0hrF"
+          href="https://checklist-beta-orcin.vercel.app/"
           target="_blank">
           <div class="avatar">GP</div>
           <div class="p-info">
             <div class="p-name">Gopal</div>
-            <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+            <div class="p-sub"><i class="ti ti-login-2"></i> Login · My Checklist</div>
           </div>
           <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
         </a>
 
         <!-- H -->
         <a class="person-card"
-          href="https://datastudio.google.com/u/0/reporting/b998dc6c-3a44-4327-94f5-6a4a0d0f69cf/page/y0hrF"
+          href="https://checklist-beta-orcin.vercel.app/"
           target="_blank">
           <div class="avatar">HM</div>
           <div class="p-info">
             <div class="p-name">Himanshu</div>
-            <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+            <div class="p-sub"><i class="ti ti-login-2"></i> Login · My Checklist</div>
           </div>
           <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
         </a>
 
         <!-- S -->
         <a class="person-card"
-          href="https://datastudio.google.com/u/0/reporting/f25e1ce4-a18b-426d-96a8-6314b076601d/page/y0hrF"
+          href="https://checklist-beta-orcin.vercel.app/"
           target="_blank">
           <div class="avatar">SK</div>
           <div class="p-info">
             <div class="p-name">Shiv Kumar Uncle</div>
-            <div class="p-sub"><i class="ti ti-report-analytics"></i> Looker Studio · Checklist</div>
+            <div class="p-sub"><i class="ti ti-login-2"></i> Login · My Checklist</div>
           </div>
           <button class="open-btn"><i class="ti ti-external-link"></i> Open</button>
         </a>
@@ -1657,6 +1714,15 @@
             <p>Live data · Plan vs Actual &amp; completion rates</p>
           </div>
           <span class="last-updated" id="last-updated-label"><i class="ti ti-refresh"></i> Loading…</span>
+          <a class="summary-open-btn" href="https://exact-choice-portal.netlify.app/" target="_blank">
+            <i class="ti ti-external-link"></i> Open
+          </a>
+        </div>
+
+        <div class="wip-note">
+          <i class="ti ti-tools"></i>
+          <span>Work in progress — we're currently fixing an issue with this summary, so the numbers below may not be
+            accurate yet.</span>
         </div>
 
         <div id="summary-container">
