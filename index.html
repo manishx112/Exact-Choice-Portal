@@ -792,6 +792,39 @@
       .band-count {
         display: none;
       }
+
+      /* 2 cards per row on phones */
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      /* stack card contents so titles get the full width */
+      .card {
+        flex-direction: column;
+        gap: 9px;
+        padding: 0.9rem 0.85rem;
+      }
+
+      .card-ico {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        font-size: 19px;
+      }
+
+      .card-title {
+        font-size: 0.8rem;
+      }
+
+      .card-sub {
+        font-size: 0.68rem;
+      }
+
+      /* hover-only arrow is dead weight on touch */
+      .card-arrow {
+        display: none;
+      }
     }
 
     /* ══════════════════════════════════════
@@ -892,7 +925,6 @@
         height: 620px;
       }
     }
-
   </style>
 </head>
 
@@ -928,7 +960,7 @@
         <div class="stat-l">📄 Sheets</div>
       </div>
       <div class="stat">
-        <div class="stat-n">8</div>
+        <div class="stat-n">9</div>
         <div class="stat-l">📊 Dashboards</div>
       </div>
       <div class="stat">
@@ -950,7 +982,7 @@
           <h2>Live Dashboards</h2>
           <p>Real-time performance &amp; tracking views</p>
         </div>
-        <span class="band-count">8 Dashboards</span>
+        <span class="band-count">9 Dashboards</span>
       </div>
       <div class="grid">
 
@@ -1033,6 +1065,18 @@
           <div class="card-body">
             <div class="card-title">Exact Choice Stock</div>
             <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live · Render
+            </div>
+            <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
+          </div>
+          <div class="card-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+
+        <!-- F: Fabric Stock Cutting Dashboard -->
+        <a class="card db" href="https://fabric-stock-cutting.vercel.app/" target="_blank">
+          <div class="card-ico"><i class="ti ti-scissors"></i></div>
+          <div class="card-body">
+            <div class="card-title">Fabric Stock Cutting</div>
+            <div class="card-sub"><i class="ti ti-circle-filled" style="font-size:9px;color:#16a34a"></i> Live · Vercel
             </div>
             <span class="pill"><i class="ti ti-layout-dashboard"></i> Dashboard</span>
           </div>
@@ -1354,9 +1398,7 @@
       <div class="person-grid">
 
         <!-- A -->
-        <a class="person-card"
-          href="https://checklist-beta-orcin.vercel.app/"
-          target="_blank">
+        <a class="person-card" href="https://checklist-beta-orcin.vercel.app/" target="_blank">
           <div class="avatar">AM</div>
           <div class="p-info">
             <div class="p-name">Aman</div>
@@ -1366,9 +1408,7 @@
         </a>
 
         <!-- D -->
-        <a class="person-card"
-          href="https://checklist-beta-orcin.vercel.app/"
-          target="_blank">
+        <a class="person-card" href="https://checklist-beta-orcin.vercel.app/" target="_blank">
           <div class="avatar">DP</div>
           <div class="p-info">
             <div class="p-name">Deepak</div>
@@ -1378,9 +1418,7 @@
         </a>
 
         <!-- D -->
-        <a class="person-card"
-          href="https://checklist-beta-orcin.vercel.app/"
-          target="_blank">
+        <a class="person-card" href="https://checklist-beta-orcin.vercel.app/" target="_blank">
           <div class="avatar">DK</div>
           <div class="p-info">
             <div class="p-name">Dinkar</div>
@@ -1390,9 +1428,7 @@
         </a>
 
         <!-- G -->
-        <a class="person-card"
-          href="https://checklist-beta-orcin.vercel.app/"
-          target="_blank">
+        <a class="person-card" href="https://checklist-beta-orcin.vercel.app/" target="_blank">
           <div class="avatar">GP</div>
           <div class="p-info">
             <div class="p-name">Gopal</div>
@@ -1402,9 +1438,7 @@
         </a>
 
         <!-- H -->
-        <a class="person-card"
-          href="https://checklist-beta-orcin.vercel.app/"
-          target="_blank">
+        <a class="person-card" href="https://checklist-beta-orcin.vercel.app/" target="_blank">
           <div class="avatar">HM</div>
           <div class="p-info">
             <div class="p-name">Himanshu</div>
@@ -1414,9 +1448,7 @@
         </a>
 
         <!-- S -->
-        <a class="person-card"
-          href="https://checklist-beta-orcin.vercel.app/"
-          target="_blank">
+        <a class="person-card" href="https://checklist-beta-orcin.vercel.app/" target="_blank">
           <div class="avatar">SK</div>
           <div class="p-info">
             <div class="p-name">Shiv Kumar Uncle</div>
